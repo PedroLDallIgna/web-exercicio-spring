@@ -2,6 +2,8 @@ package com.uri.pw.taskmanager.entities;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "tbTasks")
 public class Task {
@@ -9,8 +11,8 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private String creationDate;
-    private String limitDate;
+    private Date creationDate;
+    private Date limitDate;
     private Boolean done;
 
     public Task() {}
@@ -31,19 +33,19 @@ public class Task {
         this.description = description;
     }
 
-    public String getLimitDate() {
+    public Date getLimitDate() {
         return limitDate;
     }
 
-    public void setLimitDate(String limitDate) {
+    public void setLimitDate(Date limitDate) {
         this.limitDate = limitDate;
     }
 
-    public String getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
