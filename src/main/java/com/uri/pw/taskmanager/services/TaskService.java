@@ -28,4 +28,17 @@ public class TaskService {
     public Task create(Task newTask) {
         return repository.save(newTask);
     }
+
+    public Task update(Long id, Task updatedTask) {
+        Task currentTask = this.getById(id);
+        currentTask.setCreationDate(updatedTask.getCreationDate());
+        currentTask.setLimitDate(updatedTask.getLimitDate());
+        currentTask.setDescription(updatedTask.getDescription());
+        currentTask.setDone(updatedTask.getDone());
+        return repository.save(currentTask);
+    }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

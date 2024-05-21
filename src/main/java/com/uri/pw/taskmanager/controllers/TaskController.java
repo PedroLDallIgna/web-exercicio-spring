@@ -42,4 +42,21 @@ public class TaskController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(task);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Task> update(@PathVariable Long id, @RequestBody Task body) {
+        Task updatedTask = service.update(id, body);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(updatedTask);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
 }
