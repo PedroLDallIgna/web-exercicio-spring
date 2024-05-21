@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -14,5 +15,13 @@ public class TaskService {
 
     public List<Task> getAll() {
         return repository.findAll();
+    }
+
+    public Task getById(Long id) {
+        Optional<Task> result = repository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        throw new RuntimeException();
     }
 }
