@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +30,15 @@ public class TaskController {
         Task task = service.getById(id);
         return ResponseEntity
                 .status(HttpStatus.OK)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(task);
+    }
+
+    @PostMapping
+    public ResponseEntity<Task> create(@RequestBody Task body) {
+        Task task = service.create(body);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(task);
     }

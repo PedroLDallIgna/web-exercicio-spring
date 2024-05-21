@@ -24,4 +24,8 @@ public class TaskService {
         }
         throw new RuntimeException();
     }
+
+    public Task create(Task newTask) {
+        return repository.save(newTask);
+    }
 }
