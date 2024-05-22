@@ -41,4 +41,10 @@ public class TaskService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public void markAsDone(Long id) {
+        Task currentTask = this.getById(id);
+        currentTask.setDone(true);
+        repository.save(currentTask);
+    }
 }

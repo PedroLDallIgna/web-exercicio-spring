@@ -59,4 +59,12 @@ public class TaskController {
                 .status(HttpStatus.NO_CONTENT)
                 .build();
     }
+
+    @PatchMapping(value = "/{id}/finish")
+    public ResponseEntity<Object> markAsDone(@PathVariable Long id) {
+        service.markAsDone(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
 }
